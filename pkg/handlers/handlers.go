@@ -32,7 +32,7 @@ func (pr *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	remoteIP := r.RemoteAddr
 	pr.App.Session.Put(r.Context(), "remote_ip", remoteIP)
 
-	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(w, "home.page.gohtml", &models.TemplateData{})
 }
 
 // About is the about page handler
@@ -45,7 +45,7 @@ func (pr *Repository) About(w http.ResponseWriter, r *http.Request) {
 	stringMap["remote_ip"] = remoteIP
 
 	//send the data
-	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
+	render.RenderTemplate(w, "about.page.gohtml", &models.TemplateData{
 		StringMap: stringMap,
 	})
 }
